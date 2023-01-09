@@ -1,9 +1,12 @@
 import './App.css';
+import ButtonAppBar from './components/ButtonAppbar';
+import Student from './components/Student';
 
 function App() {
   return (
     <div className="App">
-    This is Raj Codes.
+    <ButtonAppBar />
+    <Student />
     </div>
   );
 }
