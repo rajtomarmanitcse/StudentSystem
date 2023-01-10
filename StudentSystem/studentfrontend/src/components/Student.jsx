@@ -1,6 +1,7 @@
 import { Paper } from "@mui/material";
-import { Container, margin } from "@mui/system";
-import React, { useEffect, useState } from "react";
+import { Container } from "@mui/system";
+import React, { useState } from "react";
+import ShowStudent from "./ShowStudent";
 
 function Student() {
 
@@ -8,7 +9,7 @@ function Student() {
     name: "",
     address: ""
   });
-  const [students , setStudents] = useState([]);
+  
 
  function handleChange(event){
   const {name , value} = event.target;
@@ -20,14 +21,6 @@ function Student() {
     }
   });
  }
-
- useEffect(()=>{
-  fetch("http://localhost:8080/student/getAll")
-  .then(res=>res.json())
-  .then((result)=>{
-    setStudents(result);
-  },[])
- })
 
  function handleSubmit(event) {
     event.preventDefault();
@@ -53,16 +46,7 @@ function Student() {
       <input id="submit" type="submit" value="Submit" onClick={handleSubmit} />
     </form>
     </Paper>
-
-    <Paper elevation={3} style={{ margin: "auto", width: "30%" }}>
-    {students.map(student =>(
-      <Paper elevation={6} style={{margin:"20px" , padding:"5px", textAlign:"left" }} key={student.id}>
-        <p>Id: {student.id}</p>
-        <p>Name: {student.name}</p>
-        <p>Address: {student.address}</p>
-      </Paper>
-    ))}
-    </Paper>
+    <ShowStudent />
     </Container>
   );
 }
