@@ -24,4 +24,10 @@ public class StudentController {
     public List<Student> getAllStudents(){
         return studentService.getAllStudents();
     }
+
+    @DeleteMapping("/remove")
+    public String removeStudent(@RequestBody Student student){
+         studentService.removeStudent(student);
+         return "student is deleted";
+    }
 }
